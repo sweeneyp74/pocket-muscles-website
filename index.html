@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support — Pocket Muscles</title>
+    <meta
+      name="description"
+      content="Get help with Pocket Muscles, the workout logging app for iPhone, iPad, and Mac."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wash" aria-hidden="true">
+      <div class="wash-spot wash-spot-a"></div>
+      <div class="wash-spot wash-spot-b"></div>
+    </div>
+
+    <div class="page">
+      <header class="nav-bar">
+        <h1 class="nav-bar-title">Support</h1>
+        <a class="nav-bar-side" href="terms.html">Terms</a>
+      </header>
+
+      <main class="content">
+        <h2 class="screen-title">Pocket Muscles</h2>
+        <p class="lead">
+          Questions, bugs, or feature ideas — send a note and we’ll get back to
+          you.
+        </p>
+
+        <p class="group-header">Contact</p>
+        <section class="group">
+          <a class="button-row button-row-primary" href="mailto:support@pocketmuscles.app">
+            Email Support
+          </a>
+          <p class="stack-note">support@pocketmuscles.app</p>
+        </section>
+
+        <p class="group-header">Common Questions</p>
+        <section class="group">
+          <div class="row">
+            <div class="row-label">
+              <span class="row-title">Where is my data?</span>
+              <span class="row-subtitle"
+                >Workouts and routines stay on your devices. With iCloud, they
+                sync privately through Apple CloudKit.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="row-label">
+              <span class="row-title">How do I delete data?</span>
+              <span class="row-subtitle"
+                >Delete workouts and routines in the app, or remove the app.
+                Manage iCloud data in Apple Account → iCloud.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="row-label">
+              <span class="row-title">Rest timer alerts</span>
+              <span class="row-subtitle"
+                >Allow notifications for Pocket Muscles in iOS Settings.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="row-label">
+              <span class="row-title">No custom login</span>
+              <span class="row-subtitle"
+                >Sync uses your Apple Account when iCloud is available.</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <p class="group-header">App Review</p>
+        <section class="group">
+          <p class="stack-note">
+            No demo login. Core flows work offline; iCloud sync is optional and
+            private to the user’s Apple Account.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>© <span id="year"></span> Pocket Muscles</span>
+        <span>
+          <a href="privacy.html">Privacy</a>
+          ·
+          <a href="terms.html">Terms</a>
+        </span>
+      </footer>
+    </div>
+
+    <script src="wash.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

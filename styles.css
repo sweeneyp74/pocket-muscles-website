@@ -1,0 +1,356 @@
+:root {
+  --grouped-bg: #f2f2f7;
+  --bubble: #ffffff;
+  --label: #000000;
+  --secondary: rgba(60, 60, 67, 0.6);
+  --separator: rgba(60, 60, 67, 0.12);
+  --tint: #000000;
+  --fill: rgba(120, 120, 128, 0.12);
+  --wash-a: rgb(82, 199, 140);
+  --wash-b: rgb(158, 97, 255);
+  --radius: 12px;
+  --max: 480px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grouped-bg: #000000;
+    --bubble: #1c1c1e;
+    --label: #ffffff;
+    --secondary: rgba(235, 235, 245, 0.6);
+    --separator: rgba(84, 84, 88, 0.65);
+    --tint: #ffffff;
+    --fill: rgba(120, 120, 128, 0.24);
+    --wash-a: rgb(56, 148, 107);
+    --wash-b: rgb(140, 89, 242);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--label);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.35;
+  background: var(--grouped-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--label);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* —— Ambient wash (mirrors AmbientColorWash) —— */
+.wash {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--grouped-bg);
+}
+
+.wash-spot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+  opacity: 0.22;
+}
+
+.wash-spot-a {
+  width: 440px;
+  height: 360px;
+  margin-left: -220px;
+  background: var(--wash-a);
+}
+
+.wash-spot-b {
+  width: 400px;
+  height: 320px;
+  margin-left: -200px;
+  background: var(--wash-b);
+  opacity: 0.21;
+  filter: blur(75px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .wash-spot {
+    opacity: 0.28;
+  }
+
+  .wash-spot-b {
+    opacity: 0.26;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wash-spot {
+    transform: translate3d(0, 220px, 0) !important;
+  }
+
+  .wash-spot-b {
+    transform: translate3d(40px, 260px, 0) !important;
+  }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* —— App-like chrome —— */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0.5rem 1rem;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: color-mix(in srgb, var(--grouped-bg) 72%, transparent);
+}
+
+.nav-bar-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.nav-bar-side {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--label);
+}
+
+.nav-bar-side:hover {
+  opacity: 0.55;
+}
+
+.content {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  padding: 0.5rem 1rem 3rem;
+  flex: 1;
+}
+
+.screen-title {
+  margin: 0.25rem 0 1.25rem;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.lead {
+  margin: -0.5rem 0 1.5rem;
+  color: var(--secondary);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Inset grouped sections */
+.group {
+  background: var(--bubble);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.group + .group-footer,
+.group-footer {
+  margin: -1.35rem 1rem 2rem;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--secondary);
+}
+
+.group-header {
+  margin: 0 1rem 0.45rem;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+}
+
+.row + .row {
+  border-top: 0.5px solid var(--separator);
+  margin-left: 1rem;
+  padding-left: 0;
+  width: calc(100% - 1rem);
+}
+
+.row-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.row-title {
+  display: block;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.row-subtitle {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 15px;
+  color: var(--secondary);
+  line-height: 1.35;
+}
+
+.row-chevron {
+  color: var(--secondary);
+  font-size: 14px;
+  margin-top: 0.15rem;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--label);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-row + .button-row {
+  border-top: 0.5px solid var(--separator);
+}
+
+.button-row:hover {
+  background: var(--fill);
+}
+
+.button-row-primary {
+  font-weight: 600;
+}
+
+.stack-note {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  font-size: 15px;
+  color: var(--secondary);
+  line-height: 1.4;
+}
+
+.stack-note + .stack-note {
+  border-top: 0.5px solid var(--separator);
+  margin-left: 1rem;
+  padding-left: 0;
+  width: calc(100% - 1rem);
+  box-sizing: content-box;
+}
+
+.legal {
+  background: var(--bubble);
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem 1.35rem;
+  margin-bottom: 2rem;
+}
+
+.legal .updated {
+  margin: 0 0 1.1rem;
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+.legal h2 {
+  margin: 1.35rem 0 0.4rem;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.legal p,
+.legal li {
+  margin: 0.35rem 0 0;
+  font-size: 15px;
+  color: var(--secondary);
+  line-height: 1.4;
+}
+
+.legal ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.legal a {
+  color: var(--label);
+}
+
+.site-footer {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+  font-size: 13px;
+  color: var(--secondary);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--label);
+}
