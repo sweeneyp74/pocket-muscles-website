@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <div class="wash" aria-hidden="true">
       <div class="wash-spot wash-spot-a"></div>
       <div class="wash-spot wash-spot-b"></div>
@@ -19,19 +21,22 @@
 
     <div class="page">
       <header class="nav-bar">
-        <h1 class="nav-bar-title">Privacy</h1>
-        <a class="nav-bar-side" href="index.html">Support</a>
+        <p class="nav-bar-title">Privacy</p>
+        <nav class="nav-bar-nav" aria-label="Site">
+          <a class="nav-bar-side" href="index.html">Support</a>
+        </nav>
       </header>
 
-      <main class="content">
+      <main id="main" class="content" tabindex="-1">
         <img
           class="brand-mark"
           src="pocket-muscles-icon.png"
-          alt="Pocket Muscles"
+          alt=""
           width="300"
           height="300"
+          decoding="async"
         />
-        <h2 class="screen-title">Privacy Policy</h2>
+        <h1 class="screen-title">Privacy Policy</h1>
         <p class="lead">How Pocket Muscles stores and syncs your workout data.</p>
 
         <section class="legal">
@@ -165,11 +170,11 @@
 
       <footer class="site-footer">
         <span>© <span id="year"></span> Pocket Muscles</span>
-        <span>
+        <nav aria-label="Legal">
           <a href="index.html">Support</a>
           ·
           <a href="terms.html">Terms</a>
-        </span>
+        </nav>
       </footer>
     </div>
 

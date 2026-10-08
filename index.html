@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <div class="wash" aria-hidden="true">
       <div class="wash-spot wash-spot-a"></div>
       <div class="wash-spot wash-spot-b"></div>
@@ -19,78 +21,73 @@
 
     <div class="page">
       <header class="nav-bar">
-        <h1 class="nav-bar-title">Support</h1>
-        <a class="nav-bar-side" href="terms.html">Terms</a>
+        <p class="nav-bar-title">Support</p>
+        <nav class="nav-bar-nav" aria-label="Site">
+          <a class="nav-bar-side" href="terms.html">Terms</a>
+        </nav>
       </header>
 
-      <main class="content">
+      <main id="main" class="content" tabindex="-1">
         <img
           class="brand-mark"
           src="pocket-muscles-icon.png"
-          alt="Pocket Muscles"
+          alt=""
           width="300"
           height="300"
+          decoding="async"
         />
-        <h2 class="screen-title">Pocket Muscles</h2>
+        <h1 class="screen-title">Pocket Muscles</h1>
         <p class="lead">
           Questions, bugs, or feature ideas — send a note and we’ll get back to
           you.
         </p>
 
-        <p class="group-header">Contact</p>
-        <section class="group">
+        <h2 class="group-header" id="contact-heading">Contact</h2>
+        <section class="group" aria-labelledby="contact-heading">
           <a class="button-row button-row-primary" href="mailto:support@pocketmuscles.app">
             Email Support
           </a>
           <p class="stack-note">support@pocketmuscles.app</p>
         </section>
 
-        <p class="group-header">Common Questions</p>
-        <section class="group">
-          <div class="row">
-            <div class="row-label">
-              <span class="row-title">Where is my data?</span>
-              <span class="row-subtitle"
-                >Workouts and routines stay on your devices. With iCloud, they
-                sync privately through Apple CloudKit.</span
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="row-label">
-              <span class="row-title">How do I delete data?</span>
-              <span class="row-subtitle"
-                >Delete workouts and routines in the app, or remove the app.
-                Manage iCloud data in Apple Account → iCloud.</span
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="row-label">
-              <span class="row-title">Rest timer alerts</span>
-              <span class="row-subtitle"
-                >Allow notifications for Pocket Muscles in iOS Settings.</span
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="row-label">
-              <span class="row-title">No custom login</span>
-              <span class="row-subtitle"
-                >Sync uses your Apple Account when iCloud is available.</span
-              >
-            </div>
-          </div>
+        <h2 class="group-header" id="faq-heading">Common Questions</h2>
+        <section class="group" aria-labelledby="faq-heading">
+          <article class="row">
+            <h3 class="row-title">Where is my data?</h3>
+            <p class="row-subtitle">
+              Workouts and routines stay on your devices. With iCloud, they sync
+              privately through Apple CloudKit.
+            </p>
+          </article>
+          <article class="row">
+            <h3 class="row-title">How do I delete data?</h3>
+            <p class="row-subtitle">
+              Delete workouts and routines in the app, or remove the app. Manage
+              iCloud data in Apple Account → iCloud.
+            </p>
+          </article>
+          <article class="row">
+            <h3 class="row-title">Rest timer alerts</h3>
+            <p class="row-subtitle">
+              Allow notifications for Pocket Muscles in iOS Settings.
+            </p>
+          </article>
+          <article class="row">
+            <h3 class="row-title">No custom login</h3>
+            <p class="row-subtitle">
+              Sync uses your Apple Account when iCloud is available.
+            </p>
+          </article>
         </section>
       </main>
 
       <footer class="site-footer">
         <span>© <span id="year"></span> Pocket Muscles</span>
-        <span>
+        <nav aria-label="Legal">
           <a href="privacy.html">Privacy</a>
           ·
           <a href="terms.html">Terms</a>
-        </span>
+        </nav>
       </footer>
     </div>
 
