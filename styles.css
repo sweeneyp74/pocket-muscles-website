@@ -165,12 +165,35 @@ a:hover {
   flex: 1;
 }
 
+.brand-mark {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 0.75rem auto 1rem;
+  border-radius: 66px;
+  object-fit: cover;
+  animation: brand-spin 28s linear infinite;
+}
+
+@keyframes brand-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark {
+    animation: none;
+  }
+}
+
 .screen-title {
   margin: 0.25rem 0 1.25rem;
   font-size: 34px;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
+  text-align: center;
 }
 
 .lead {
@@ -178,6 +201,7 @@ a:hover {
   color: var(--secondary);
   font-size: 15px;
   line-height: 1.4;
+  text-align: center;
 }
 
 /* Inset grouped sections */
